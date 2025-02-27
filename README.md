@@ -1,7 +1,7 @@
-Ce script python a été créé pour injecter les coordonnées GPS de points (fichier shape) dans les métadonnées des photos correspondantes, il permet aussi de relier les fichiers photos d'un répertoire à un fichier de points géoréférencés (type shape) via un identifiant.
+Ce script python a été créé pour injecter les coordonnées GPS de points (fichier shape) dans les métadonnées des photos correspondantes, il permet aussi de générer une table avec les noms des nouveaux fichiers photos (new_fichier_gps.jpg du répertoire NEW) de chaque point (station). La table peut être utilisée pour afficher les photos dans QGIS via une liaison.
 Toutes les résultats ont été testées uniquement avec QGIS 3.40
  
-Etape 1 : Charger le fichier de points Station.shp dans QGIS
+Etape 1 : Charger le fichier de points 'Station.shp' dans QGIS
  
 Etape 2 : Exporter la table Station en .xlsx
 
@@ -16,7 +16,7 @@ Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 
 Etape 5 : Charger le nouveau fichier xslx dans QGIS (faire une jointure avec une autre table en prenant soin de personnaliser/supprimer le prefixe du nom de la table jointe)
 
-Etape 6 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS" 
+Etape 6 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS", en prenant soin de mettre à jour le chemin du répertoire photos
 	  >>> Les photos s'affichent en diaporama lorsqu'on clique sur la station
 	  *** Attention à activer "Afficher les Info bulles" dans le Menu "Vue" de QGIS
 
