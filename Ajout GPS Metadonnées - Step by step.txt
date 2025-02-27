@@ -1,0 +1,25 @@
+﻿Etape 1 : Charger le shp dans QGIS (stations Pilier)
+
+Etape 2 : Exporter la table Station en .xlsx
+*** Pour que le script Python fonctionne il peut être nécessaire de modifier les coordonnées en remplaçant les "," par des "."
+
+Etape 3 : Charger les photos à modifier dans un dossier (X photos en .jpg)
+
+Etape 4 : Faire tourner le script Python "Ajout GPS dans métadonnées"
+	  *** Attention à modifier les noms de chemin dans le script ***
+	  >>> Création d'un dossier NEW et copie des photos modifiées dans ce dossier
+	  >>> Les nouvelles photos portent le suffixe _gps.jpg en fin de nom
+	  Vérifier qu'on a bien le même nombre de photos en sortie
+
+Etape 5 : Faire tourner le script Python "Création d'un xlsx avec nom photos"
+	  *** Attention à modifier les noms de chemin dans le script ***
+	  >>> On obtient un fichier xlsx avec le nom des photos dans les colonnes "PHOTO_1", "PHOTO_2" ...
+
+Etape 6 : Charger le xslx dans QGIS (faire une jointure avec une autre table en prenant soin de personnaliser/supprimer le prefixe du nom de la table jointe)
+
+Etape 7 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS" 
+	  >>> Les photos s'affichent en diaporama lorsqu'on clique sur la station
+	  *** Attention à activer "Afficher les Info bulles" dans le Menu "Vue" de QGIS
+
+ou Etape 6bis : Importer les nouvelles photos avec leurs coordonnées GPS en métadonnées
+	    
