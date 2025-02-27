@@ -1,0 +1,33 @@
+﻿<div id="image-container" style="overflow-x: auto; white-space: nowrap; width: 400px;"></div>
+
+<script>
+  (function() {
+    // Définir le chemin du dossier où sont stockées les images
+    var basePath = 'file:///C:/Chemin/vers/Dossier/NEW/';  
+
+    // Récupérer les noms des images depuis les champs
+	
+	var images = ["[% PHOTO_1 %]", "[% PHOTO_2 %]", "[% PHOTO_3 %]", "[% PHOTO_4 %]", "[% PHOTO_5 %]", "[% PHOTO_6 %]", 
+ "[% PHOTO_7 %]", "[% PHOTO_8 %]", "[% PHOTO_9 %]", "[% PHOTO_10 %]", "[% PHOTO_11 %]", "[% PHOTO_12 %]", 
+ "[% PHOTO_13 %]", "[% PHOTO_14 %]", "[% PHOTO_15 %]", "[% PHOTO_16 %]", "[% PHOTO_17 %]", "[% PHOTO_18 %]", 
+ "[% PHOTO_19 %]", "[% PHOTO_20 %]", "[% PHOTO_21 %]", "[% PHOTO_22 %]", "[% PHOTO_23 %]", "[% PHOTO_24 %]", 
+ "[% PHOTO_25 %]", "[% PHOTO_26 %]", "[% PHOTO_27 %]", "[% PHOTO_28 %]", "[% PHOTO_29 %]", "[% PHOTO_30 %]", 
+ "[% PHOTO_31 %]", "[% PHOTO_32 %]", "[% PHOTO_33 %]", "[% PHOTO_34 %]", "[% PHOTO_35 %]", "[% PHOTO_36 %]", 
+ "[% PHOTO_37 %]", "[% PHOTO_38 %]", "[% PHOTO_39 %]", "[% PHOTO_40 %]", "[% PHOTO_41 %]"]
+
+
+    // Conteneur où seront insérées les images
+    var container = document.getElementById('image-container');
+
+    // Ajouter les images dynamiquement
+    images.forEach(function(imageName) {
+      if (imageName) { // Vérifier si le champ n'est pas vide
+        var img = document.createElement('img');
+        img.src = basePath + imageName;
+        img.style.width = "400px";
+        img.style.marginRight = "10px";
+        container.appendChild(img);
+      }
+    });
+  })();
+</script>
