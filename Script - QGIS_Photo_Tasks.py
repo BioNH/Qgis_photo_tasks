@@ -104,7 +104,7 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
 
 source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' #Fichier xlsx issu de QGIS
 nom_colonne = 'FICHIER' #nom de la colonne qui contient le nom des stations
-prefixe = 'CodeMission_CodeStation' #utiliser pour filtrer les colonnes pertinentes
+prefixe = 'CodeMission_PrefixSta' #utiliser pour filtrer les colonnes pertinentes
 colonne_latitude = 'LAT_DD'
 colonne_longitude = 'LONG_DD'
 colonne_profondeur = 'PROFONDEUR'
