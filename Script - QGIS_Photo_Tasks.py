@@ -104,15 +104,15 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
 
 source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' #Fichier xlsx issu de QGIS
 nom_colonne = 'FICHIER' #nom de la colonne qui contient le nom des stations
-prefixe = 'OFB2023_Pilier_P' #utiliser pour filtrer les colonnes pertinentes
+prefixe = 'CodeMission_CodeStation' #utiliser pour filtrer les colonnes pertinentes
 colonne_latitude = 'LAT_DD'
 colonne_longitude = 'LONG_DD'
 colonne_profondeur = 'PROFONDEUR'
 
 new_file_path_xlsx = 'C:/Chemin/vers/fichier/Nouveau_fichier_avec_Nom_photos.xlsx' #Nom du nouveau fichier Excel avec les photos
 
-identifiant_xlsx = 'Pilier_P' #ce qui permet de trouver le numéro de la station à partir du nom stocké dans le fichier EXCEL
-identifiant_photo = 'P' #ce qui permet de trouver le numéro {i} de la station dans le nom de la photo au format xxxx_P{i}_xxx entouré de "_"
+identifiant_xlsx = 'CodeMission_PrefixSta' #ce qui permet de trouver le numéro de la station à partir du nom stocké dans le fichier EXCEL
+identifiant_photo = 'PrefixSta' #ce qui permet de trouver le numéro {i} de la station dans le nom de la photo au format xxxx_P{i}_xxx entouré de "_"
 photos_directory = 'C:/Chemin/vers/repertoire_photos_originales/'  # Remplacez par le chemin du répertoire des photos
 
 #STEP 1 : On crée un dataframe à partir du fichier Excel issu de QGIS avec des données GPS au bon format pour une opération sur les métadonnées
