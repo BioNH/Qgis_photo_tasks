@@ -13,6 +13,7 @@ un champs avec le préfixe des fichiers photos (identifiant station)
 	
 les coordonnées latitude et longitude de la station exprimés en degrés décimaux 
 *par ex : les champs "LAT_DD" et "LONG_DD"*
+
 *** Attention à ne pas utiliser d'espace dans les noms de champs ***
  
 Etape 1 : Charger un fichier de points 'Station.shp' dans QGIS
