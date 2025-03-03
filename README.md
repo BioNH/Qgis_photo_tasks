@@ -2,7 +2,7 @@ Ce script python a été créé pour injecter les coordonnées GPS de points (fi
 Toutes les résultats ont été testées uniquement avec QGIS 3.40
 
 > Conditions préalables :
-
+> 
 > **Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
 > *ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}*
 > 	
