@@ -3,7 +3,7 @@ Toutes les résultats ont été testées uniquement avec QGIS 3.40
 
 Conditions préalables :
 
-**Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
+_**Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
 	ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}
 	
 **Fichier.shp** : la table attributaire des stations contient à minima :
@@ -12,7 +12,7 @@ un champs avec le préfixe des fichiers photos (identifiant station)
 par ex : CodeMission_P{i} dans le champs "FICHIER"
 
 les coordonnées latitude et longitude de la station exprimés en degrés décimaux 
-par ex : les champs "LAT_DD" et "LONG_DD"
+par ex : les champs "LAT_DD" et "LONG_DD"_
  
 Etape 1 : Charger un fichier de points 'Station.shp' dans QGIS
  
