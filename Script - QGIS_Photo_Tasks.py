@@ -116,7 +116,7 @@ identifiant_photo = 'PrefixSta' #ce qui permet de trouver le numéro {i} de la s
 photos_directory = 'C:/Chemin/vers/repertoire_photos_originales/'  # Remplacez par le chemin du répertoire des photos
 
 #STEP 1 : On crée un dataframe à partir du fichier Excel issu de QGIS avec des données GPS au bon format pour une opération sur les métadonnées
-result_df = import_gps_from_xlsx(source_file_path_xlsx, nom_colonne, prefixe, colonne_latitude, colonne_longitude, colonne_profondeur)
+result_df = import_gps_from_xlsx(source_file_path_xlsx, nom_colonne, colonne_latitude, colonne_longitude, colonne_profondeur)
 #STEP 2 : On parcourt le répertoire photo en ajoutant les métadonnées GPS et en ajoutant une colonne au dataframe avec le nom des photos (des photos modifiées)
 updated_df = add_gps_to_photos(result_df, photos_directory, nom_colonne, identifiant_xlsx, identifiant_photo)
 #STEP 3 : On enregistre le nouveau dataframe avec le nom des photos au format .xlsx
