@@ -103,7 +103,7 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
 
 # VARIABLES POUR L'EXPLOITATION DU FICHIER EXCEL
 
-source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' #Fichier xlsx issu de QGIS
+source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' #Fichier xlsx issu de QGIS, attention à bien utiliser le séparateur "/"
 nom_colonne = 'FICHIER' #nom de la colonne qui contient le nom des stations
 colonne_latitude = 'LAT_DD'
 colonne_longitude = 'LONG_DD'
