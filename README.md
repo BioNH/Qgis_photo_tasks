@@ -3,8 +3,8 @@ Toutes les résultats ont été testées uniquement avec QGIS 3.40
 
 Conditions préalables :
 
-**Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
-*ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}*
+> **Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
+> *ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}*
 		
 **Fichier.shp** : la table attributaire des stations contient à minima 
 	
