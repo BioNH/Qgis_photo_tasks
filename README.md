@@ -1,8 +1,8 @@
 Ce script python a été créé pour injecter les coordonnées GPS de points (fichier shape) dans les métadonnées des photos correspondantes, il permet aussi de générer une table avec les noms des nouveaux fichiers photos (new_fichier_gps.jpg du répertoire NEW) de chaque point (station). La table peut être utilisée pour afficher les photos dans QGIS via une liaison.
 Toutes les résultats ont été testées uniquement avec QGIS 3.40
 
-Conditions préalables :
-
+_Conditions préalables :
+_
 _**Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
 	ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}
 	
