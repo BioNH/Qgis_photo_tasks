@@ -3,16 +3,16 @@ Toutes les résultats ont été testées uniquement avec QGIS 3.40
 
 Conditions préalables :
 
- **Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
- ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}
+	**Photos** : les fichiers sont dans un même répertoire et sont nommés de façon à pouvoir être identifiés en fonction d'un identifiant station.
+	ex : CodeMission_P{i}_xxx.jpg, ici les noms avec le même P{i}
+		
+	**Fichier.shp** : la table attributaire des stations contient à minima :
 	
- **Fichier.shp** : la table attributaire des stations contient à minima :
-
- un champs avec le préfixe des fichiers photos (identifiant station) 
- par ex : CodeMission_P{i} dans le champs "FICHIER"
-
- les coordonnées latitude et longitude de la station exprimés en degrés décimaux 
- par ex : les champs "LAT_DD" et "LONG_DD"
+	un champs avec le préfixe des fichiers photos (identifiant station) 
+	par ex : CodeMission_P{i} dans le champs "FICHIER"
+	
+	les coordonnées latitude et longitude de la station exprimés en degrés décimaux 
+	par ex : les champs "LAT_DD" et "LONG_DD"
  
 Etape 1 : Charger un fichier de points 'Station.shp' dans QGIS
  
@@ -22,7 +22,7 @@ Etape 3 : Charger les photos à modifier dans un dossier (n photos en .jpg)
 
 Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 
-	  **Attention à modifier les noms de chemin dans le script avec le bon séparateur "/"**
+	  *** Attention à modifier les noms de chemin dans le script avec le bon séparateur "/" ***
 	  >>> Création d'un dossier NEW et copie des photos modifiées dans ce dossier
 	  >>> Les nouvelles photos portent le suffixe _gps.jpg en fin de nom
 	  Vérifier qu'on a bien le même nombre de photos en sortie
