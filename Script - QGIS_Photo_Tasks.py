@@ -56,48 +56,56 @@ def import_gps_from_xlsx(file_path, nom_colonne,  colonne_latitude, colonne_long
 # >>> TRAITEMENT DES PHOTOS
 
 def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, identifiant_photo):
-
-    new_directory = os.path.join(photos_directory, f'NEW_{identifiant_xlsx}') # Créer le sous-dossier 'NEW' s'il n'existe pas déjà
+    # Créer le sous-dossier 'NEW' s'il n'existe pas déjà
+    new_directory = os.path.join(photos_directory, f'NEW_{identifiant_xlsx}')
     if not os.path.exists(new_directory):
         os.makedirs(new_directory)
 
-    for index, row in df.iterrows():     # Parcourir chaque ligne du dataframe
-        fichier = row[nom_colonne]  # Le nom de la station (ex: OFB2023_Pilier_P1)
+    for index, row in df.iterrows():  # Parcourir chaque ligne du dataframe
+        sta = row[nom_colonne]  # Le nom de la station (ex : OFB2023_Pilier_P1)
         gps_info = row['GPS_info']  # Les coordonnées GPS à ajouter associées à cette station
-        # print(f'Ligne issue du SIG {fichier}')
+        # print(f'Ligne issue du SIG {sta}')
 
-        if identifiant_xlsx in fichier:
-            station_number = fichier.split(identifiant_xlsx)[1]  # Extraire le numéro du Pilier (i) à partir de 'OFB2023_Pilier_P{i}'
-            print(f'Code mission correct : Station associée = {station_number}')
+        # Déterminer station_number en fonction de identifiant_xlsx
+        if identifiant_xlsx:  # Si identifiant_xlsx n'est pas None ou vide
+            try:
+                station_number = sta.split(identifiant_xlsx)[1]  # Extraire le numéro du Pilier (i)
+            except IndexError:
+                print(f'Erreur : impossible de diviser {sta} avec {identifiant_xlsx}. Utilisation de {sta} comme station_number.')
+                station_number = sta
+        else:  # Si identifiant_xlsx est None ou vide
+            station_number = sta
 
-            photo_list = []
+        print(f'Station associée = {station_number}')
 
-            # Recherche des photos dans le répertoire spécifié
-            for filename in os.listdir(photos_directory):
-                if f"{identifiant_photo}{station_number}_" in filename: # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
+        photo_list = []
 
-                    photo_list.append(filename)
+        # Recherche des photos dans le répertoire spécifié
+        for filename in os.listdir(photos_directory):
+            if f"{identifiant_photo}{station_number}_" in filename:  # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
+                photo_list.append(filename)
 
-                    image_path = os.path.join(photos_directory, filename)
-                    img = Image.open(image_path)  # Ouvrir l'image
-                    print(f"Ajout des coordonnées GPS à {filename} avec {gps_info}")
+                image_path = os.path.join(photos_directory, filename)
+                img = Image.open(image_path)  # Ouvrir l'image
+                print(f"Ajout des coordonnées GPS à {filename} avec {gps_info}")
 
-                    exif_dict = piexif.load(img.info.get('exif', b""))
-                    exif_dict['GPS'] = gps_info
-                    exif_bytes = piexif.dump(exif_dict)
+                exif_dict = piexif.load(img.info.get('exif', b""))
+                exif_dict['GPS'] = gps_info
+                exif_bytes = piexif.dump(exif_dict)
 
-                    new_filename = filename.replace(".JPG", "_gps.JPG")
-                    new_image_path = os.path.join(new_directory, new_filename)
-                    img.save(new_image_path, exif=exif_bytes) # Sauvegarder l'image avec les nouvelles métadonnées EXIF
+                new_filename = filename.replace(".JPG", "_gps.JPG")
+                new_image_path = os.path.join(new_directory, new_filename)
+                img.save(new_image_path, exif=exif_bytes)  # Sauvegarder l'image avec les nouvelles métadonnées EXIF
 
+        # Vérifier si des photos ont été trouvées
+        if photo_list:  # Si la liste n'est pas vide
             for i, photo in enumerate(photo_list):
                 col_name = f'PHOTO_{i + 1}'
                 df.at[index, col_name] = photo
         else:
-            print(f'Code mission incorrect : {fichier} ignoré')
+            print(f'Aucune photo trouvée pour la station {station_number}')
 
     print("Fin du traitement")
-
     return df
 # **********************************************
 
