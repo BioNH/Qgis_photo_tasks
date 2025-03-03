@@ -21,7 +21,7 @@ Etape 2 : Exporter la table Station en .xlsx
 Etape 3 : Charger les photos à modifier dans un dossier (n photos en .jpg)
 
 Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
-	  ** Attention à modifier les noms de chemin dans le script avec le bon séparateur "/" **
+	  **Attention à modifier les noms de chemin dans le script avec le bon séparateur "/"**
 	  >>> Création d'un dossier NEW et copie des photos modifiées dans ce dossier
 	  >>> Les nouvelles photos portent le suffixe _gps.jpg en fin de nom
 	  Vérifier qu'on a bien le même nombre de photos en sortie
