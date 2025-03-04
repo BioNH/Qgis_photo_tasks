@@ -26,7 +26,7 @@ Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 
 	*** Attention à modifier les noms de chemin dans le script avec le bon séparateur "/" ***
 	>>> Création d'un dossier NEW et copie des photos modifiées dans ce dossier
-	*** Possibilité de modifié la compression de l'image jpg (quality=85 recommandé) ***
+	*** Possibilité de modifié la compression de l'image jpg (quality=95 recommandé pour conserver la qualité d'origine) ***
 	>>> Les nouvelles photos portent le suffixe _gps.jpg en fin de nom
 	>>> Vérifier qu'on a bien le même nombre de photos en sortie
 	>>> On obtient un fichier xlsx avec le nom des photos dans les colonnes "PHOTO_1", "PHOTO_2" ...
