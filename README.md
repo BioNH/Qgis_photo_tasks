@@ -33,8 +33,6 @@ Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 
 Etape 5 : Charger le nouveau fichier xslx dans QGIS (faire une jointure avec une autre table en prenant soin de personnaliser/supprimer le préfixe du nom de la table jointe)
 
-Etape 6 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS", en prenant soin de mettre à jour le chemin du répertoire photos
+Etape 6 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS", en prenant soin de mettre à jour le chemin du répertoire photos et de vérifier que i de [% PHOTO_i %] correspond au nombre max de champs de la table.
 	  >>> Les photos s'affichent en diaporama lorsqu'on clique sur la station
 	  *** Attention à activer "Afficher les Info bulles" dans le Menu "Vue" de QGIS
-
-ou Etape 5bis : Importer les nouvelles photos avec leurs coordonnées GPS en métadonnées
