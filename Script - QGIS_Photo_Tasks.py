@@ -94,7 +94,7 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
 
                 new_filename = filename.replace(".JPG", "_gps.JPG")
                 new_image_path = os.path.join(new_directory, new_filename)
-                img.save(new_image_path, exif=exif_bytes)  # Sauvegarder l'image avec les nouvelles métadonnées EXIF
+                img.save(new_image_path, quality=85, exif=exif_bytes)  # Sauvegarder l'image avec les nouvelles métadonnées EXIF
                 photo_list.append(new_filename)
 
         # Vérifier si des photos ont été trouvées
