@@ -31,8 +31,9 @@ Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 	>>> Vérifier qu'on a bien le même nombre de photos en sortie
 	>>> On obtient un fichier xlsx avec le nom des photos dans les colonnes "PHOTO_1", "PHOTO_2" ...
 
-Etape 5 : Charger le nouveau fichier xslx dans QGIS (faire une jointure avec une autre table en prenant soin de personnaliser/supprimer le préfixe du nom de la table jointe)
+Etape 5 : Charger le nouveau fichier xslx dans QGIS (faire une jointure en prenant soin de personnaliser/supprimer le préfixe du nom de la table jointe)
+          >>> La table attributaire de la couche "Stations" conserve les noms de champs de la table xlsx (PHOTO_1, PHOTO_2,...)
 
-Etape 6 : Dans les propriétés de la couche, copier le script "Infobulle - QGIS", en prenant soin de mettre à jour le chemin du répertoire photos et de vérifier que i de [% PHOTO_i %] correspond au nombre max de champs de la table.
+Etape 6 : Dans les propriétés de la couche => onglet infobulle, copier le script "Infobulle - QGIS" dans le cadre HTML, en prenant soin de mettre à jour le chemin du répertoire photos et de vérifier que i de [% PHOTO_i %] correspond au nombre max de champs de la table.
 	  >>> Les photos s'affichent en diaporama lorsqu'on clique sur la station
 	  *** Attention à activer "Afficher les Info bulles" dans le Menu "Vue" de QGIS
