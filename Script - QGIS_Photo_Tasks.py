@@ -82,7 +82,7 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
 
         # Recherche des photos dans le répertoire spécifié
         for filename in os.listdir(photos_directory):
-            if f"{identifiant_photo}{station_number}_" in filename:  # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
+            if f"{identifiant_photo}{station_number}_" in filename and filename.lower().endswith((".jpg", ".jpeg", ".mp4")):  # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
 
                 image_path = os.path.join(photos_directory, filename)
                 img = Image.open(image_path)  # Ouvrir l'image
