@@ -128,7 +128,7 @@ source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' 
 nom_colonne = 'FICHIER' #nom de la colonne qui contient le nom des stations
 colonne_latitude = 'LAT_DD'
 colonne_longitude = 'LONG_DD'
-colonne_profondeur = 'PROFONDEUR' #Si colonne absente dans fichier d'origine, mettre ''. L'altitude 0 sera alors inscrite dans les métadonnées.
+colonne_profondeur = 'PROFONDEUR' #Si colonne absente dans fichier d'origine, mettre '' et l'altitude 0 sera inscrite dans les métadonnées.
 
 new_file_path_xlsx = 'C:/Chemin/vers/fichier/Nouveau_fichier_avec_Nom_photos.xlsx' #Nom du nouveau fichier Excel avec les photos
 
