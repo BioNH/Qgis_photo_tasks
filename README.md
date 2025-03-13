@@ -25,6 +25,7 @@ Etape 3 : Charger les photos à modifier dans un dossier (n photos en .jpg)
 Etape 4 : Faire tourner le script Python "QGIS_photo_tasks"
 
 	*** Attention à modifier les noms de chemin dans le script avec le bon séparateur "/" ***
+	*** Attention à modifier les noms des variables dans le script (nom_colonne ; colonne_latitude ; colonne_longitude ; colonne_profondeur ; identifiant_xlsx ; identifiant_photo)***
 	>>> Création d'un dossier NEW et copie des photos modifiées dans ce dossier
 	*** Possibilité de modifié la compression de l'image jpg (quality=95 recommandé pour conserver la qualité d'origine) ***
 	>>> Les nouvelles photos portent le suffixe _gps.jpg en fin de nom
