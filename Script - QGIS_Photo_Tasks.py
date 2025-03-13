@@ -67,43 +67,47 @@ def add_gps_to_photos(df, photos_directory, nom_colonne, identifiant_xlsx, ident
         # print(f'Ligne issue du SIG {sta}')
 
         # Déterminer station_number en fonction de identifiant_xlsx
-        if identifiant_xlsx:  # Si identifiant_xlsx n'est pas None ou vide
-            try:
-                station_number = sta.split(identifiant_xlsx)[1]  # Extraire le numéro du Pilier (i)
-            except IndexError:
-                print(f'Erreur : impossible de diviser {sta} avec {identifiant_xlsx}. Utilisation de {sta} comme station_number.')
+        if identifiant_xlsx in sta:  # Si identifiant_xlsx contenu dans la cellule
+            if identifiant_xlsx: # Si identifiant_xlsx n'est pas None ou vide
+                station_number=sta.split(identifiant_xlsx)[1] #Alors on split
+                print(f"Identifiant mission correct : Station associée = {station_number}")
+            else: #Si identifiant est nul alors on prend toute la cellule
                 station_number = sta
-        else:  # Si identifiant_xlsx est None ou vide
-            station_number = sta
+                print (f"Identifiant mission vide : Station associée = {station_number}")
 
-        print(f'Station associée = {station_number}')
+            photo_list = []
 
-        photo_list = []
+            # Recherche des photos dans le répertoire spécifié
+            for filename in os.listdir(photos_directory):
+                if f"{identifiant_photo}{station_number}_" in filename and filename.lower().endswith((".jpg", ".jpeg",
+                                                                                                      ".mp4")):  # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
 
-        # Recherche des photos dans le répertoire spécifié
-        for filename in os.listdir(photos_directory):
-            if f"{identifiant_photo}{station_number}_" in filename and filename.lower().endswith((".jpg", ".jpeg", ".mp4")):  # Si le nom du fichier de l'image contient _P{i} (par exemple _P1_ pour Pilier 1)
+                    image_path = os.path.join(photos_directory, filename)
+                    img = Image.open(image_path)  # Ouvrir l'image
+                    print(f"Ajout des coordonnées GPS à {filename} avec {gps_info}")
 
-                image_path = os.path.join(photos_directory, filename)
-                img = Image.open(image_path)  # Ouvrir l'image
-                print(f"Ajout des coordonnées GPS à {filename} avec {gps_info}")
+                    exif_dict = piexif.load(img.info.get('exif', b""))
+                    exif_dict['GPS'] = gps_info
+                    exif_bytes = piexif.dump(exif_dict)
 
-                exif_dict = piexif.load(img.info.get('exif', b""))
-                exif_dict['GPS'] = gps_info
-                exif_bytes = piexif.dump(exif_dict)
+                    new_filename = filename.replace(".JPG", "_gps.JPG")
+                    new_image_path = os.path.join(new_directory, new_filename)
+                    img.save(new_image_path, quality=95,
+                             exif=exif_bytes)  # Sauvegarder l'image avec les nouvelles métadonnées EXIF, le paramètre quality permet de choisir le niveau de compression (>80 recommandé)
+                    photo_list.append(new_filename)
 
-                new_filename = filename.replace(".JPG", "_gps.JPG")
-                new_image_path = os.path.join(new_directory, new_filename)
-                img.save(new_image_path, quality=95, exif=exif_bytes)  # Sauvegarder l'image avec les nouvelles métadonnées EXIF, le paramètre quality permet de choisir le niveau de compression (>80 recommandé)
-                photo_list.append(new_filename)
+            # Vérifier si des photos ont été trouvées
+            if photo_list:  # Si la liste n'est pas vide
+                for i, photo in enumerate(photo_list):
+                    col_name = f'PHOTO_{i + 1}'
+                    df.at[index, col_name] = photo
+            else:
+                print(f'Aucune photo trouvée pour la station {station_number}')
 
-        # Vérifier si des photos ont été trouvées
-        if photo_list:  # Si la liste n'est pas vide
-            for i, photo in enumerate(photo_list):
-                col_name = f'PHOTO_{i + 1}'
-                df.at[index, col_name] = photo
-        else:
-            print(f'Aucune photo trouvée pour la station {station_number}')
+
+        else:  # Si identifiant_xlsx n'est pas contenu dans la cellule (i.e. la station est hors scope)
+            print (f"Identifiant mission non compatible : Station ignorée = {sta}")
+
 
     print("Fin du traitement")
     return df
