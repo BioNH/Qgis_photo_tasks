@@ -23,7 +23,10 @@ def create_gps_column(df, colonne_latitude, colonne_longitude, colonne_profondeu
     for index, row in df.iterrows(): # Remplir la colonne 'GPS_info' avec des données GPS converties
         latitude = row[colonne_latitude]
         longitude = row[colonne_longitude]
-        altitude = row[colonne_profondeur]  # Utilisation de PROFONDEUR comme l'altitude
+        if colonne_profondeur: #N'est pas Non ou vide
+            altitude = row[colonne_profondeur]  # Utilisation de PROFONDEUR comme l'altitude
+        else:
+            altitude = 0
 
         # Convertir la latitude et la longitude en DMS
         latitude_dms = convert_to_dms(latitude)
@@ -34,7 +37,7 @@ def create_gps_column(df, colonne_latitude, colonne_longitude, colonne_profondeu
             piexif.GPSIFD.GPSLatitude: latitude_dms,
             piexif.GPSIFD.GPSLongitudeRef: b'E' if longitude >= 0 else b'W',
             piexif.GPSIFD.GPSLongitude: longitude_dms,
-            piexif.GPSIFD.GPSAltitude: (int(altitude), 1)
+            piexif.GPSIFD.GPSAltitude: (int(altitude*100), 100)
             }
 
         gps_dict_list.append(gps_dict)
@@ -47,10 +50,16 @@ def import_gps_from_xlsx(file_path, nom_colonne,  colonne_latitude, colonne_long
 
     df = pd.read_excel(file_path)
 
-    result_df = df[[nom_colonne, colonne_latitude, colonne_longitude, colonne_profondeur]].copy()  # Créer une copie explicite
-    result_df_gps = create_gps_column(result_df, colonne_latitude, colonne_longitude, colonne_profondeur)
+    if colonne_profondeur: #N'est pas vide ou égale à None
 
-    # print(result_df_gps)
+        result_df = df[[nom_colonne, colonne_latitude, colonne_longitude, colonne_profondeur]].copy()  # Créer une copie explicite
+        result_df_gps = create_gps_column(result_df, colonne_latitude, colonne_longitude, colonne_profondeur)
+
+    else: #S'il n'y a pas de colonne profondeur
+        result_df = df[[nom_colonne, colonne_latitude, colonne_longitude]].copy()  # Créer une copie explicite sans colonne profondeur
+        result_df_gps = create_gps_column(result_df, colonne_latitude, colonne_longitude, None)
+
+    print(result_df_gps)
     return result_df_gps
 
 # >>> TRAITEMENT DES PHOTOS
@@ -119,7 +128,7 @@ source_file_path_xlsx = 'C:/Chemin/vers/fichier/Table_stations_exportées.xlsx' 
 nom_colonne = 'FICHIER' #nom de la colonne qui contient le nom des stations
 colonne_latitude = 'LAT_DD'
 colonne_longitude = 'LONG_DD'
-colonne_profondeur = 'PROFONDEUR'
+colonne_profondeur = 'PROFONDEUR' #Si colonne absente dans fichier d'origine, mettre ''. L'altitude 0 sera alors inscrite dans les métadonnées.
 
 new_file_path_xlsx = 'C:/Chemin/vers/fichier/Nouveau_fichier_avec_Nom_photos.xlsx' #Nom du nouveau fichier Excel avec les photos
 
